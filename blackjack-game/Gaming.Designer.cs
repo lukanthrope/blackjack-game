@@ -29,61 +29,61 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gaming));
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureClim = new System.Windows.Forms.PictureBox();
+            this.pictureGoblin = new System.Windows.Forms.PictureBox();
+            this.pictureCrupie = new System.Windows.Forms.PictureBox();
+            this.pictureTable = new System.Windows.Forms.PictureBox();
             this.username = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureClim)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureGoblin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCrupie)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureTable)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox4
+            // pictureClim
             // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(1001, 174);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(290, 266);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 7;
-            this.pictureBox4.TabStop = false;
+            this.pictureClim.Image = ((System.Drawing.Image)(resources.GetObject("pictureClim.Image")));
+            this.pictureClim.Location = new System.Drawing.Point(1001, 163);
+            this.pictureClim.Name = "pictureClim";
+            this.pictureClim.Size = new System.Drawing.Size(290, 277);
+            this.pictureClim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureClim.TabIndex = 7;
+            this.pictureClim.TabStop = false;
             // 
-            // pictureBox3
+            // pictureGoblin
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(190, 164);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(290, 266);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 6;
-            this.pictureBox3.TabStop = false;
+            this.pictureGoblin.Image = ((System.Drawing.Image)(resources.GetObject("pictureGoblin.Image")));
+            this.pictureGoblin.Location = new System.Drawing.Point(271, 133);
+            this.pictureGoblin.Name = "pictureGoblin";
+            this.pictureGoblin.Size = new System.Drawing.Size(292, 322);
+            this.pictureGoblin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureGoblin.TabIndex = 6;
+            this.pictureGoblin.TabStop = false;
             // 
-            // pictureBox2
+            // pictureCrupie
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(470, 54);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(525, 276);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
+            this.pictureCrupie.Image = ((System.Drawing.Image)(resources.GetObject("pictureCrupie.Image")));
+            this.pictureCrupie.Location = new System.Drawing.Point(641, 22);
+            this.pictureCrupie.Name = "pictureCrupie";
+            this.pictureCrupie.Size = new System.Drawing.Size(207, 308);
+            this.pictureCrupie.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureCrupie.TabIndex = 5;
+            this.pictureCrupie.TabStop = false;
             // 
-            // pictureBox1
+            // pictureTable
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(299, 288);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(850, 446);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.pictureTable.Image = ((System.Drawing.Image)(resources.GetObject("pictureTable.Image")));
+            this.pictureTable.Location = new System.Drawing.Point(291, -15);
+            this.pictureTable.Name = "pictureTable";
+            this.pictureTable.Size = new System.Drawing.Size(906, 791);
+            this.pictureTable.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureTable.TabIndex = 4;
+            this.pictureTable.TabStop = false;
             // 
             // username
             // 
             this.username.AutoSize = true;
-            this.username.Location = new System.Drawing.Point(507, 31);
+            this.username.Location = new System.Drawing.Point(30, 54);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(46, 17);
             this.username.TabIndex = 8;
@@ -95,17 +95,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1480, 788);
             this.Controls.Add(this.username);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureClim);
+            this.Controls.Add(this.pictureGoblin);
+            this.Controls.Add(this.pictureCrupie);
+            this.Controls.Add(this.pictureTable);
             this.Name = "Gaming";
             this.Text = "Gaming";
             this.Load += new System.EventHandler(this.Gaming_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureClim)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureGoblin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCrupie)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,10 +113,10 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureClim;
+        private System.Windows.Forms.PictureBox pictureGoblin;
+        private System.Windows.Forms.PictureBox pictureCrupie;
+        private System.Windows.Forms.PictureBox pictureTable;
         private System.Windows.Forms.Label username;
     }
 }
