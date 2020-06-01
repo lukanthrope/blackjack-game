@@ -10,19 +10,18 @@ using System.Windows.Forms;
 
 namespace blackjack_game
 {
-    public partial class Form1 : Form
+    public partial class Gaming : Form
     {
-        public Form1()
+        public string name;
+        public Gaming(string name)
         {
             InitializeComponent();
+            this.name = name;
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void Gaming_Load(object sender, EventArgs e)
         {
-            this.Hide();
-            Gaming form2 = new Gaming("stasyan");
-            form2.Closed += (object s, EventArgs args) => this.Close();
-            form2.Show();
+            username.Text = this.name;
         }
     }
 }
