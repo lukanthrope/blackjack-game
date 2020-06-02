@@ -12,6 +12,8 @@ namespace blackjack_game
 {
     public partial class Gaming : Form
     {
+        Dictionary<PictureBox, int> cardDict = new Dictionary<PictureBox, int>(); 
+
         public string name;
         public int numberOfOponents;
         public Gaming(string name, int numberOfOponents)
@@ -23,14 +25,18 @@ namespace blackjack_game
 
         private void Gaming_Load(object sender, EventArgs e)
         {
+            HideCards();
+            CreateDict();
+            
+
             username.Text = name;
             pictureTable.Controls.Add(pictureCrupie);
             pictureTable.Controls.Add(pictureGoblin);
             pictureTable.Controls.Add(pictureClim);
 
-            pictureCrupie.Location = new Point(260, 38);
-            pictureGoblin.Location = new Point(30, 100);
-            pictureClim.Location = new Point(460, 150);
+            pictureCrupie.Location = new Point(270, 0);
+            pictureGoblin.Location = new Point(20, 80);
+            pictureClim.Location = new Point(500, 130);
 
             pictureCrupie.BackColor = Color.Transparent;
             pictureGoblin.BackColor = Color.Transparent;
@@ -45,6 +51,144 @@ namespace blackjack_game
             {
                 pictureClim.Visible = false;
             }
+        }
+
+        private void HideCards()
+        {
+            twoC.Visible = false;
+            twoD.Visible = false;
+            twoH.Visible = false;
+            twoS.Visible = false;
+
+            threeC.Visible = false;
+            threeD.Visible = false;
+            threeH.Visible = false;
+            threeS.Visible = false;
+
+            fourC.Visible = false;
+            fourD.Visible = false;
+            fourH.Visible = false;
+            fourS.Visible = false;
+
+            fiveC.Visible = false;
+            fiveD.Visible = false;
+            fiveH.Visible = false;
+            fiveS.Visible = false;
+
+            sixC.Visible = false;
+            sixD.Visible = false;
+            sixH.Visible = false;
+            sixS.Visible = false;
+
+            sevenC.Visible = false;
+            sevenD.Visible = false;
+            sevenH.Visible = false;
+            sevenS.Visible = false;
+
+            eightC.Visible = false;
+            eightD.Visible = false;
+            eightH.Visible = false;
+            eightS.Visible = false;
+
+            nineC.Visible = false;
+            nineD.Visible = false;
+            nineH.Visible = false;
+            nineS.Visible = false;
+
+            tenC.Visible = false;
+            tenD.Visible = false;
+            tenH.Visible = false;
+            tenS.Visible = false;
+
+            jackC.Visible = false;
+            jackD.Visible = false;
+            jackH.Visible = false;
+            jackS.Visible = false;
+
+            queenC.Visible = false;
+            queenD.Visible = false;
+            queenH.Visible = false;
+            queenS.Visible = false;
+
+            kingC.Visible = false;
+            kingD.Visible = false;
+            kingH.Visible = false;
+            kingS.Visible = false;
+
+            aceC.Visible = false;
+            aceD.Visible = false;
+            aceH.Visible = false;
+            aceS.Visible = false;
+
+            back.Visible = false;
+        }
+
+        private void CreateDict()
+        {
+            cardDict.Add(twoC, 2);
+            cardDict.Add(twoD, 2);
+            cardDict.Add(twoH, 2);
+            cardDict.Add(twoS, 2);
+
+            cardDict.Add(threeC, 3);
+            cardDict.Add(threeD, 3);
+            cardDict.Add(threeH, 3);
+            cardDict.Add(threeS, 3);
+
+            cardDict.Add(fourC, 4);
+            cardDict.Add(fourD, 4);
+            cardDict.Add(fourH, 4);
+            cardDict.Add(fourS, 4);
+
+            cardDict.Add(fiveC, 5);
+            cardDict.Add(fiveD, 5);
+            cardDict.Add(fiveH, 5);
+            cardDict.Add(fiveS, 5);
+
+            cardDict.Add(sixC, 6);
+            cardDict.Add(sixD, 6);
+            cardDict.Add(sixH, 6);
+            cardDict.Add(sixS, 6);
+
+            cardDict.Add(sevenC, 7);
+            cardDict.Add(sevenD, 7);
+            cardDict.Add(sevenH, 7);
+            cardDict.Add(sevenS, 7);
+
+            cardDict.Add(eightC, 8);
+            cardDict.Add(eightD, 8);
+            cardDict.Add(eightH, 8);
+            cardDict.Add(eightS, 8);
+
+            cardDict.Add(nineC, 9);
+            cardDict.Add(nineD, 9);
+            cardDict.Add(nineH, 9);
+            cardDict.Add(nineS, 9);
+
+            cardDict.Add(tenC, 10);
+            cardDict.Add(tenD, 10);
+            cardDict.Add(tenH, 10);
+            cardDict.Add(tenS, 10);
+
+            cardDict.Add(jackC, 10);
+            cardDict.Add(jackD, 10);
+            cardDict.Add(jackH, 10);
+            cardDict.Add(jackS, 10);
+
+            cardDict.Add(queenC, 10);
+            cardDict.Add(queenD, 10);
+            cardDict.Add(queenH, 10);
+            cardDict.Add(queenS, 10);
+
+            cardDict.Add(kingC, 10);
+            cardDict.Add(kingD, 10);
+            cardDict.Add(kingH, 10);
+            cardDict.Add(kingS, 10);
+
+            cardDict.Add(aceC, 11);
+            cardDict.Add(aceD, 11);
+            cardDict.Add(aceH, 11);
+            cardDict.Add(aceS, 11);
         }
     }
 }
