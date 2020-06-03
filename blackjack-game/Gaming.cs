@@ -12,13 +12,23 @@ namespace blackjack_game
 {
     public partial class Gaming : Form
     {
-        Dictionary<PictureBox, int> cardDict = new Dictionary<PictureBox, int>(); 
+        const int BLACKJACK = 21;
+
+        Dictionary<PictureBox, int> cardDict = new Dictionary<PictureBox, int>();
+
+        Dictionary<PictureBox, int> gamerCards = new Dictionary<PictureBox, int>();
+        Dictionary<PictureBox, int> goblinCards = new Dictionary<PictureBox, int>();
+        Dictionary<PictureBox, int> climCards = new Dictionary<PictureBox, int>();
+        Dictionary<PictureBox, int> cropieCards = new Dictionary<PictureBox, int>();
 
         public string name;
         public int numberOfOponents;
+
+        int gamerMoney = 2000;
         public Gaming(string name, int numberOfOponents)
         {
             InitializeComponent();
+            MoneyInput.KeyPress += MoneyInputValidator;
             this.name = name;
             this.numberOfOponents = numberOfOponents;
         }
@@ -27,8 +37,8 @@ namespace blackjack_game
         {
             HideCards();
             CreateDict();
-            
 
+            money.Text = gamerMoney.ToString();
             username.Text = name;
             pictureTable.Controls.Add(pictureCrupie);
             pictureTable.Controls.Add(pictureGoblin);
@@ -51,6 +61,13 @@ namespace blackjack_game
             {
                 pictureClim.Visible = false;
             }
+        }
+
+        private void MoneyInputValidator(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (!char.IsDigit(c) && c != 8)
+                e.Handled = true;
         }
 
         private void HideCards()
@@ -189,6 +206,36 @@ namespace blackjack_game
             cardDict.Add(aceD, 11);
             cardDict.Add(aceH, 11);
             cardDict.Add(aceS, 11);
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            if (MoneyInput.Text.Trim() != "")
+            {
+                if (Convert.ToInt32(MoneyInput.Text) > gamerMoney)
+                {
+                MessageBox.Show("У вас недостатньо коштів");
+                }
+                gamerMoney -= Convert.ToInt32(MoneyInput.Text);
+                money.Text = gamerMoney.ToString();
+                GetRandomCard(cardDict).Visible = true ;
+            }
+        }
+
+        private PictureBox GetRandomCard(Dictionary<PictureBox, int> dict)
+        {
+            Random rand = new Random();
+            return dict.ElementAt(rand.Next(0, dict.Count)).Key;
+        }
+
+        private void GetCardsTo(Dictionary<PictureBox, int> from, Dictionary<PictureBox, int> to, int num)
+        {
+            for (int i = 0; i < num; i++)
+            {
+                PictureBox temp = GetRandomCard(from);
+                to.Add(temp, from[temp]);
+                from.Remove(temp);
+            }
         }
     }
 }

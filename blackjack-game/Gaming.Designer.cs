@@ -89,6 +89,11 @@
             this.aceH = new System.Windows.Forms.PictureBox();
             this.aceS = new System.Windows.Forms.PictureBox();
             this.back = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.MoneyInput = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClim)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureGoblin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCrupie)).BeginInit();
@@ -209,7 +214,7 @@
             this.money.Name = "money";
             this.money.Size = new System.Drawing.Size(21, 23);
             this.money.TabIndex = 9;
-            this.money.Text = "$";
+            this.money.Text = "0";
             // 
             // pictureBox1
             // 
@@ -796,12 +801,69 @@
             // 
             this.back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.back.Image = ((System.Drawing.Image)(resources.GetObject("back.Image")));
-            this.back.Location = new System.Drawing.Point(1396, 708);
+            this.back.Location = new System.Drawing.Point(861, 464);
             this.back.Name = "back";
             this.back.Size = new System.Drawing.Size(54, 77);
             this.back.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.back.TabIndex = 69;
             this.back.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label1.Location = new System.Drawing.Point(12, 83);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(21, 23);
+            this.label1.TabIndex = 70;
+            this.label1.Text = "$";
+            // 
+            // MoneyInput
+            // 
+            this.MoneyInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MoneyInput.Location = new System.Drawing.Point(1128, 747);
+            this.MoneyInput.Name = "MoneyInput";
+            this.MoneyInput.Size = new System.Drawing.Size(117, 38);
+            this.MoneyInput.TabIndex = 71;
+            this.MoneyInput.Text = "100";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(1134, 708);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 23);
+            this.label2.TabIndex = 72;
+            this.label2.Text = "Ставка:";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.button1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.ForeColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(1216, 747);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(99, 38);
+            this.button1.TabIndex = 73;
+            this.button1.Text = "ставка";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.ForeColor = System.Drawing.SystemColors.Control;
+            this.button2.Location = new System.Drawing.Point(1364, 703);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(131, 82);
+            this.button2.TabIndex = 74;
+            this.button2.Text = "покинути казино";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // Gaming
             // 
@@ -809,6 +871,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1542, 807);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.MoneyInput);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.back);
             this.Controls.Add(this.aceS);
             this.Controls.Add(this.aceH);
@@ -997,5 +1064,10 @@
         private System.Windows.Forms.PictureBox aceH;
         private System.Windows.Forms.PictureBox aceS;
         private System.Windows.Forms.PictureBox back;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox MoneyInput;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
