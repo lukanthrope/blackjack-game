@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,11 +16,13 @@ namespace blackjack_game
         const int BLACKJACK = 21;
 
         Dictionary<PictureBox, int> cardDict = new Dictionary<PictureBox, int>();
-
-        Dictionary<PictureBox, int> gamerCards = new Dictionary<PictureBox, int>();
+        Dictionary<PictureBox, int>[] gamersCards = new Dictionary<PictureBox, int>[4];
+        /*
+         * Dictionary<PictureBox, int> gamerCards = new Dictionary<PictureBox, int>();
         Dictionary<PictureBox, int> goblinCards = new Dictionary<PictureBox, int>();
         Dictionary<PictureBox, int> climCards = new Dictionary<PictureBox, int>();
         Dictionary<PictureBox, int> cropieCards = new Dictionary<PictureBox, int>();
+        */
 
         public string name;
         public int numberOfOponents;
@@ -52,6 +55,8 @@ namespace blackjack_game
             pictureGoblin.BackColor = Color.Transparent;
             pictureClim.BackColor = Color.Transparent;
 
+            gamersCards[0] = new Dictionary<PictureBox, int>();
+            gamersCards[1] = new Dictionary<PictureBox, int>();
             if (numberOfOponents < 2)
             {
                 pictureGoblin.Visible = false;
@@ -60,7 +65,15 @@ namespace blackjack_game
             if (numberOfOponents < 3)
             {
                 pictureClim.Visible = false;
+                gamersCards[2] = new Dictionary<PictureBox, int>();
             }
+
+            if (numberOfOponents == 3)
+            {
+                gamersCards[2] = new Dictionary<PictureBox, int>();
+                gamersCards[3] = new Dictionary<PictureBox, int>();
+            }
+
         }
 
         private void MoneyInputValidator(object sender, KeyPressEventArgs e)
@@ -208,17 +221,51 @@ namespace blackjack_game
             cardDict.Add(aceS, 11);
         }
 
+        private void wait(int milliseconds)
+        {
+            System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
+            if (milliseconds == 0 || milliseconds < 0) return;
+            timer1.Interval = milliseconds;
+            timer1.Enabled = true;
+            timer1.Start();
+            timer1.Tick += (s, e) =>
+            {
+                timer1.Enabled = false;
+                timer1.Stop();
+            };
+            while (timer1.Enabled)
+            {
+                Application.DoEvents();
+            }
+        }
+
         private void Button1_Click(object sender, EventArgs e)
         {
             if (MoneyInput.Text.Trim() != "")
             {
                 if (Convert.ToInt32(MoneyInput.Text) > gamerMoney)
                 {
-                MessageBox.Show("У вас недостатньо коштів");
+                    MessageBox.Show("У вас недостатньо коштів");
+                } else
+                {
+                    gamerMoney -= Convert.ToInt32(MoneyInput.Text);
+                    money.Text = gamerMoney.ToString();
+                    GetRandomCard(cardDict).Visible = true;
+
+                    MoneyInput.Visible = false;
+                    button1.Visible = false;
+
+                    int i;
+                    
+                    for (i = 0; i < numberOfOponents; i++)
+                    {
+                        GetCardsTo(cardDict, gamersCards[i], 2);
+                        wait(2000);
+                        
+                    }
+                    
                 }
-                gamerMoney -= Convert.ToInt32(MoneyInput.Text);
-                money.Text = gamerMoney.ToString();
-                GetRandomCard(cardDict).Visible = true ;
+                
             }
         }
 
@@ -235,6 +282,8 @@ namespace blackjack_game
                 PictureBox temp = GetRandomCard(from);
                 to.Add(temp, from[temp]);
                 from.Remove(temp);
+
+                temp.Visible = true;
             }
         }
     }
