@@ -253,7 +253,9 @@ namespace blackjack_game
                     MoneyInput.Visible = false;
                     button1.Visible = false;
                     label2.Visible = false;
-                    moreCard.Visible = true;
+
+                    cropieSays.Visible = false;
+                    cropieText.Visible = false;
 
                     int i;
                     
@@ -262,19 +264,32 @@ namespace blackjack_game
                         if (i == 1)
                         {
                             GetCardsTo(cardDict, gamersCards[i], i);
-                            wait(500);
+                            wait(200);
                             back.Visible = true;
-                            wait(800);
+                            wait(600);
                         } else
                         {
                             GetCardsTo(cardDict, gamersCards[i], i);
-                            wait(500);
+                            wait(200);
                             GetCardsTo(cardDict, gamersCards[i], i);
-                            wait(800);
+                            wait(600);
                         }
                         
                     }
-                    
+
+                    if (isThereBlackJack())
+                    {
+                        getWinner();
+
+                        MoneyInput.Visible = true;
+                        button1.Visible = true;
+                        label2.Visible = true;
+                    }
+                    else
+                    {
+                        moreCard.Visible = true;
+                        enoughButton.Visible = true;
+                    }
                 }
                 
             }
@@ -318,9 +333,7 @@ namespace blackjack_game
             {
                 int sum = 0;
                 foreach (var el in gamersCards[i])
-                {
                     sum += el.Value;
-                }
 
                 if (sum == max && sum != 0)
                 {
@@ -338,6 +351,22 @@ namespace blackjack_game
             cropieSays.Visible = true;
             cropieText.Visible = true;
             cropieText.Text = "Виграв " + maxIndex;
+        }
+
+        private bool isThereBlackJack()
+        {
+            int sum;
+            for (int i = 0; i <= numberOfOponents; i++)
+            {
+                sum = 0;
+                foreach (var el in gamersCards[i])
+                    sum += el.Value;
+
+                if (sum == 21)
+                    return true;
+            }
+
+            return false;
         }
 
         private void EnoughButton_Click(object sender, EventArgs e)
