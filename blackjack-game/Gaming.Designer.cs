@@ -95,6 +95,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.moreCard = new System.Windows.Forms.Button();
+            this.enoughButton = new System.Windows.Forms.Button();
+            this.cropieSays = new System.Windows.Forms.PictureBox();
+            this.climSays = new System.Windows.Forms.PictureBox();
+            this.goblinSays = new System.Windows.Forms.PictureBox();
+            this.cropieText = new System.Windows.Forms.Label();
+            this.climText = new System.Windows.Forms.Label();
+            this.goblinText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClim)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureGoblin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCrupie)).BeginInit();
@@ -153,12 +160,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.aceH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aceS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.back)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cropieSays)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.climSays)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.goblinSays)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureClim
             // 
             this.pictureClim.Image = ((System.Drawing.Image)(resources.GetObject("pictureClim.Image")));
-            this.pictureClim.Location = new System.Drawing.Point(983, 224);
+            this.pictureClim.Location = new System.Drawing.Point(986, 239);
             this.pictureClim.Name = "pictureClim";
             this.pictureClim.Size = new System.Drawing.Size(375, 361);
             this.pictureClim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -318,7 +328,7 @@
             // 
             this.fourC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.fourC.Image = ((System.Drawing.Image)(resources.GetObject("fourC.Image")));
-            this.fourC.Location = new System.Drawing.Point(14, 708);
+            this.fourC.Location = new System.Drawing.Point(16, 708);
             this.fourC.Name = "fourC";
             this.fourC.Size = new System.Drawing.Size(54, 77);
             this.fourC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -802,7 +812,7 @@
             // 
             this.back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.back.Image = ((System.Drawing.Image)(resources.GetObject("back.Image")));
-            this.back.Location = new System.Drawing.Point(861, 464);
+            this.back.Location = new System.Drawing.Point(705, 463);
             this.back.Name = "back";
             this.back.Size = new System.Drawing.Size(54, 77);
             this.back.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -871,12 +881,95 @@
             this.moreCard.BackColor = System.Drawing.Color.Purple;
             this.moreCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.moreCard.ForeColor = System.Drawing.SystemColors.Control;
-            this.moreCard.Location = new System.Drawing.Point(1156, 747);
+            this.moreCard.Location = new System.Drawing.Point(986, 725);
             this.moreCard.Name = "moreCard";
             this.moreCard.Size = new System.Drawing.Size(125, 38);
             this.moreCard.TabIndex = 75;
             this.moreCard.Text = "ще карту";
             this.moreCard.UseVisualStyleBackColor = false;
+            this.moreCard.Visible = false;
+            this.moreCard.Click += new System.EventHandler(this.MoreCard_Click);
+            // 
+            // enoughButton
+            // 
+            this.enoughButton.BackColor = System.Drawing.Color.Purple;
+            this.enoughButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.enoughButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.enoughButton.Location = new System.Drawing.Point(1128, 725);
+            this.enoughButton.Name = "enoughButton";
+            this.enoughButton.Size = new System.Drawing.Size(125, 38);
+            this.enoughButton.TabIndex = 76;
+            this.enoughButton.Text = "досить";
+            this.enoughButton.UseVisualStyleBackColor = false;
+            this.enoughButton.Visible = false;
+            this.enoughButton.Click += new System.EventHandler(this.EnoughButton_Click);
+            // 
+            // cropieSays
+            // 
+            this.cropieSays.Image = ((System.Drawing.Image)(resources.GetObject("cropieSays.Image")));
+            this.cropieSays.Location = new System.Drawing.Point(851, -49);
+            this.cropieSays.Name = "cropieSays";
+            this.cropieSays.Size = new System.Drawing.Size(302, 247);
+            this.cropieSays.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.cropieSays.TabIndex = 77;
+            this.cropieSays.TabStop = false;
+            // 
+            // climSays
+            // 
+            this.climSays.Image = ((System.Drawing.Image)(resources.GetObject("climSays.Image")));
+            this.climSays.Location = new System.Drawing.Point(1228, 61);
+            this.climSays.Name = "climSays";
+            this.climSays.Size = new System.Drawing.Size(302, 247);
+            this.climSays.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.climSays.TabIndex = 78;
+            this.climSays.TabStop = false;
+            this.climSays.Visible = false;
+            // 
+            // goblinSays
+            // 
+            this.goblinSays.Image = ((System.Drawing.Image)(resources.GetObject("goblinSays.Image")));
+            this.goblinSays.Location = new System.Drawing.Point(12, 109);
+            this.goblinSays.Name = "goblinSays";
+            this.goblinSays.Size = new System.Drawing.Size(302, 247);
+            this.goblinSays.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.goblinSays.TabIndex = 79;
+            this.goblinSays.TabStop = false;
+            this.goblinSays.Visible = false;
+            // 
+            // cropieText
+            // 
+            this.cropieText.AutoSize = true;
+            this.cropieText.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cropieText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.cropieText.Location = new System.Drawing.Point(921, 61);
+            this.cropieText.Name = "cropieText";
+            this.cropieText.Size = new System.Drawing.Size(174, 23);
+            this.cropieText.TabIndex = 80;
+            this.cropieText.Text = "Робіть ставки^^";
+            // 
+            // climText
+            // 
+            this.climText.AutoSize = true;
+            this.climText.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.climText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.climText.Location = new System.Drawing.Point(1332, 175);
+            this.climText.Name = "climText";
+            this.climText.Size = new System.Drawing.Size(109, 23);
+            this.climText.TabIndex = 81;
+            this.climText.Text = "ще карту";
+            this.climText.Visible = false;
+            // 
+            // goblinText
+            // 
+            this.goblinText.AutoSize = true;
+            this.goblinText.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.goblinText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.goblinText.Location = new System.Drawing.Point(99, 223);
+            this.goblinText.Name = "goblinText";
+            this.goblinText.Size = new System.Drawing.Size(109, 23);
+            this.goblinText.TabIndex = 82;
+            this.goblinText.Text = "ще карту";
+            this.goblinText.Visible = false;
             // 
             // Gaming
             // 
@@ -884,6 +977,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1542, 807);
+            this.Controls.Add(this.goblinText);
+            this.Controls.Add(this.climText);
+            this.Controls.Add(this.cropieText);
+            this.Controls.Add(this.goblinSays);
+            this.Controls.Add(this.climSays);
+            this.Controls.Add(this.cropieSays);
+            this.Controls.Add(this.enoughButton);
             this.Controls.Add(this.moreCard);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -1011,6 +1111,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.aceH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aceS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.back)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cropieSays)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.climSays)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.goblinSays)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1084,5 +1187,12 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button moreCard;
+        private System.Windows.Forms.Button enoughButton;
+        private System.Windows.Forms.PictureBox cropieSays;
+        private System.Windows.Forms.PictureBox climSays;
+        private System.Windows.Forms.PictureBox goblinSays;
+        private System.Windows.Forms.Label cropieText;
+        private System.Windows.Forms.Label climText;
+        private System.Windows.Forms.Label goblinText;
     }
 }

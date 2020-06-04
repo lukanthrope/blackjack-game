@@ -17,15 +17,13 @@ namespace blackjack_game
 
         Dictionary<PictureBox, int> cardDict = new Dictionary<PictureBox, int>();
         Dictionary<PictureBox, int>[] gamersCards = new Dictionary<PictureBox, int>[4];
-        /*
-         * Dictionary<PictureBox, int> gamerCards = new Dictionary<PictureBox, int>();
-        Dictionary<PictureBox, int> goblinCards = new Dictionary<PictureBox, int>();
-        Dictionary<PictureBox, int> climCards = new Dictionary<PictureBox, int>();
-        Dictionary<PictureBox, int> cropieCards = new Dictionary<PictureBox, int>();
-        */
 
-        public string name;
-        public int numberOfOponents;
+        int[,] currentPositions = new int[4, 2] {
+            { 50, 570 }, { 480, 378 }, { 300, 450 }, { 700, 455 },
+        };
+
+        string name;
+        int numberOfOponents;
 
         int gamerMoney = 2000;
         public Gaming(string name, int numberOfOponents)
@@ -74,6 +72,7 @@ namespace blackjack_game
                 gamersCards[3] = new Dictionary<PictureBox, int>();
             }
 
+            goblinSays.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
         }
 
         private void MoneyInputValidator(object sender, KeyPressEventArgs e)
@@ -250,17 +249,29 @@ namespace blackjack_game
                 {
                     gamerMoney -= Convert.ToInt32(MoneyInput.Text);
                     money.Text = gamerMoney.ToString();
-                    GetRandomCard(cardDict).Visible = true;
 
                     MoneyInput.Visible = false;
                     button1.Visible = false;
+                    label2.Visible = false;
+                    moreCard.Visible = true;
 
                     int i;
                     
-                    for (i = 0; i < numberOfOponents; i++)
+                    for (i = 0; i <= numberOfOponents; i++)
                     {
-                        GetCardsTo(cardDict, gamersCards[i], 2);
-                        wait(2000);
+                        if (i == 1)
+                        {
+                            GetCardsTo(cardDict, gamersCards[i], i);
+                            wait(500);
+                            back.Visible = true;
+                            wait(800);
+                        } else
+                        {
+                            GetCardsTo(cardDict, gamersCards[i], i);
+                            wait(500);
+                            GetCardsTo(cardDict, gamersCards[i], i);
+                            wait(800);
+                        }
                         
                     }
                     
@@ -275,16 +286,63 @@ namespace blackjack_game
             return dict.ElementAt(rand.Next(0, dict.Count)).Key;
         }
 
-        private void GetCardsTo(Dictionary<PictureBox, int> from, Dictionary<PictureBox, int> to, int num)
+        private void GetCardsTo(Dictionary<PictureBox, int> from, Dictionary<PictureBox, int> to, int gamerNumber = 0)
         {
-            for (int i = 0; i < num; i++)
-            {
-                PictureBox temp = GetRandomCard(from);
-                to.Add(temp, from[temp]);
-                from.Remove(temp);
+            PictureBox temp = GetRandomCard(from);
+            to.Add(temp, from[temp]);
+            from.Remove(temp);
 
-                temp.Visible = true;
+            SetCardPosition(temp, gamerNumber);
+            temp.Visible = true;
+        }
+
+        private void SetCardPosition(PictureBox card, int num)
+        {
+            card.Location = new Point(currentPositions[num, 0], currentPositions[num, 1]);
+            currentPositions[num, 0] += 40;
+        }
+
+        private void MoreCard_Click(object sender, EventArgs e)
+        {
+            if (cardDict.Count != 0)
+                GetCardsTo(cardDict, gamersCards[0]);
+
+            getWinner();
+        }
+
+        private void getWinner()
+        {
+            int max = 0;
+            int maxIndex = -1;
+            for (int i = 0; i <= numberOfOponents; i++)
+            {
+                int sum = 0;
+                foreach (var el in gamersCards[i])
+                {
+                    sum += el.Value;
+                }
+
+                if (sum == max && sum != 0)
+                {
+                    cropieSays.Visible = true;
+                    cropieText.Visible = true;
+                    cropieText.Text = "Нічия!\nГроші забирає казино";
+                    return;
+                } else if (sum > max && sum <= 21)
+                {
+                    max = sum;
+                    maxIndex = i;
+                }
             }
+
+            cropieSays.Visible = true;
+            cropieText.Visible = true;
+            cropieText.Text = "Виграв " + maxIndex;
+        }
+
+        private void EnoughButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
