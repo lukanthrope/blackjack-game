@@ -17,6 +17,7 @@ namespace blackjack_game
 
         Dictionary<PictureBox, int> cardDict = new Dictionary<PictureBox, int>();
         Dictionary<PictureBox, int>[] gamersCards = new Dictionary<PictureBox, int>[4];
+        string[] names = new string[4] { "ви", "казино", "goblin", "CLim Jukov" };
 
         int[,] currentPositions = new int[4, 2] {
             { 50, 570 }, { 480, 378 }, { 300, 450 }, { 700, 455 },
