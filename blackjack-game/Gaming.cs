@@ -323,7 +323,9 @@ namespace blackjack_game
             if (cardDict.Count != 0)
                 GetCardsTo(cardDict, gamersCards[0]);
 
-            getWinner();
+            if (isThereBlackJack())
+                getWinner();
+            BotsTakeCard();
         }
 
         private void getWinner()
@@ -332,15 +334,13 @@ namespace blackjack_game
             int maxIndex = -1;
             for (int i = 0; i <= numberOfOponents; i++)
             {
-                int sum = 0;
-                foreach (var el in gamersCards[i])
-                    sum += el.Value;
+                int sum = FindSum(gamersCards[i]);
 
                 if (sum == max && sum != 0)
                 {
                     cropieSays.Visible = true;
                     cropieText.Visible = true;
-                    cropieText.Text = "Нічия!\nГроші забирає казино";
+                    cropieText.Text = "Нічия!\nГроші забирає \n" + names[1];
                     return;
                 } else if (sum > max && sum <= 21)
                 {
@@ -351,17 +351,14 @@ namespace blackjack_game
 
             cropieSays.Visible = true;
             cropieText.Visible = true;
-            cropieText.Text = "Виграв " + maxIndex;
+            cropieText.Text = "Виграв " + names[maxIndex];
         }
 
         private bool isThereBlackJack()
         {
-            int sum;
             for (int i = 0; i <= numberOfOponents; i++)
             {
-                sum = 0;
-                foreach (var el in gamersCards[i])
-                    sum += el.Value;
+                int sum = FindSum(gamersCards[i]);
 
                 if (sum == 21)
                     return true;
@@ -370,9 +367,35 @@ namespace blackjack_game
             return false;
         }
 
+        private int FindSum(Dictionary<PictureBox, int> dict)
+        {
+            int sum = 0;
+            foreach (var el in dict)
+                sum += el.Value;
+            return sum;
+        }
+
+        private void BotsTakeCard()
+        {
+            for (int i = 0; i <= numberOfOponents; i++)
+            {
+                int sum = FindSum(gamersCards[i]);
+                if (sum < 17)
+                {
+                    if (i == 1)
+                        back.Visible = false;
+                    GetCardsTo(cardDict, gamersCards[i], i);
+                    wait(500);
+
+                    BotsTakeCard();
+                }
+            }
+        } 
+
         private void EnoughButton_Click(object sender, EventArgs e)
         {
-
+            BotsTakeCard();
+            getWinner();
         }
     }
 }
