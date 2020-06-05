@@ -14,10 +14,10 @@ namespace blackjack_game
     public partial class Gaming : Form
     {
         const int BLACKJACK = 21;
-
+        
         Dictionary<PictureBox, int> cardDict = new Dictionary<PictureBox, int>();
-        Dictionary<PictureBox, int>[] gamersCards = new Dictionary<PictureBox, int>[4];
         string[] names = new string[4] { "ви", "казино", "goblin", "CLim Jukov" };
+        Player[] players = new Player[4];
 
         int[,] currentPositions = new int[4, 2] {
             { 50, 570 }, { 480, 378 }, { 300, 450 }, { 700, 455 },
@@ -39,7 +39,7 @@ namespace blackjack_game
         {
             HideCards();
             CreateDict();
-
+            
             money.Text = gamerMoney.ToString();
             username.Text = name;
             pictureTable.Controls.Add(pictureCrupie);
@@ -54,8 +54,8 @@ namespace blackjack_game
             pictureGoblin.BackColor = Color.Transparent;
             pictureClim.BackColor = Color.Transparent;
 
-            gamersCards[0] = new Dictionary<PictureBox, int>();
-            gamersCards[1] = new Dictionary<PictureBox, int>();
+            players[0] = new Player(names[0]);
+            players[1] = new Player(names[1]);
             if (numberOfOponents < 2)
             {
                 pictureGoblin.Visible = false;
@@ -64,13 +64,13 @@ namespace blackjack_game
             if (numberOfOponents < 3)
             {
                 pictureClim.Visible = false;
-                gamersCards[2] = new Dictionary<PictureBox, int>();
+                players[2] = new Player(names[2]);
             }
 
             if (numberOfOponents == 3)
             {
-                gamersCards[2] = new Dictionary<PictureBox, int>();
-                gamersCards[3] = new Dictionary<PictureBox, int>();
+                players[2] = new Player(names[2]);
+                players[3] = new Player(names[3]);
             }
 
             goblinSays.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
@@ -264,15 +264,15 @@ namespace blackjack_game
                     {
                         if (i == 1)
                         {
-                            GetCardsTo(cardDict, gamersCards[i], i);
+                            GetCardsTo(cardDict, players[i].cards, i);
                             wait(200);
                             back.Visible = true;
                             wait(600);
                         } else
                         {
-                            GetCardsTo(cardDict, gamersCards[i], i);
+                            GetCardsTo(cardDict, players[i].cards, i);
                             wait(200);
-                            GetCardsTo(cardDict, gamersCards[i], i);
+                            GetCardsTo(cardDict, players[i].cards, i);
                             wait(600);
                         }
                         
@@ -321,7 +321,7 @@ namespace blackjack_game
         private void MoreCard_Click(object sender, EventArgs e)
         {
             if (cardDict.Count != 0)
-                GetCardsTo(cardDict, gamersCards[0]);
+                GetCardsTo(cardDict, players[0].cards);
 
             if (isThereBlackJack())
                 getWinner();
@@ -334,7 +334,7 @@ namespace blackjack_game
             int maxIndex = -1;
             for (int i = 0; i <= numberOfOponents; i++)
             {
-                int sum = FindSum(gamersCards[i]);
+                int sum = FindSum(players[i].cards);
 
                 if (sum == max && sum != 0)
                 {
@@ -358,7 +358,7 @@ namespace blackjack_game
         {
             for (int i = 0; i <= numberOfOponents; i++)
             {
-                int sum = FindSum(gamersCards[i]);
+                int sum = FindSum(players[i].cards);
 
                 if (sum == 21)
                     return true;
@@ -379,12 +379,12 @@ namespace blackjack_game
         {
             for (int i = 0; i <= numberOfOponents; i++)
             {
-                int sum = FindSum(gamersCards[i]);
+                int sum = FindSum(players[i].cards);
                 if (sum < 17)
                 {
                     if (i == 1)
                         back.Visible = false;
-                    GetCardsTo(cardDict, gamersCards[i], i);
+                    GetCardsTo(cardDict, players[i].cards, i);
                     wait(500);
 
                     BotsTakeCard();
