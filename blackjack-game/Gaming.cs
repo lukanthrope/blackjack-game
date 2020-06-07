@@ -19,7 +19,7 @@ namespace blackjack_game
         string[] names = new string[4] { "ви", "казино", "goblin", "CLim Jukov" };
         Player[] players = new Player[4];
 
-        int[,] currentPositions = new int[4, 2] {
+        int[,] initialPositions = new int[4, 2] {
             { 50, 570 }, { 480, 378 }, { 300, 450 }, { 700, 455 },
         };
 
@@ -54,23 +54,42 @@ namespace blackjack_game
             pictureGoblin.BackColor = Color.Transparent;
             pictureClim.BackColor = Color.Transparent;
 
-            players[0] = new Player(names[0]);
-            players[1] = new Player(names[1]);
+            int[] tempArr = new int[2]
+            {
+                initialPositions[0, 0], initialPositions[0, 1]
+            };
+
+            players[0] = new Player(names[0], tempArr);
+
+            tempArr = new int[2]
+            {
+                initialPositions[1, 0], initialPositions[1, 1]
+            };
+            players[1] = new Player(names[1], tempArr, cropieSays, cropieText);
+
             if (numberOfOponents < 2)
             {
                 pictureGoblin.Visible = false;
-            } 
+            }
 
+            tempArr = new int[2]
+            {
+                initialPositions[2, 0], initialPositions[2, 1]
+            };
             if (numberOfOponents < 3)
             {
                 pictureClim.Visible = false;
-                players[2] = new Player(names[2]);
+                players[2] = new Player(names[2], tempArr, goblinSays, goblinText);
             }
 
             if (numberOfOponents == 3)
             {
-                players[2] = new Player(names[2]);
-                players[3] = new Player(names[3]);
+                players[2] = new Player(names[2], tempArr, goblinSays, goblinText);
+                tempArr = new int[2]
+            {
+                initialPositions[3, 0], initialPositions[3, 1]
+            };
+                players[3] = new Player(names[3], tempArr, climSays, climText);
             }
 
             goblinSays.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
@@ -221,7 +240,7 @@ namespace blackjack_game
             cardDict.Add(aceS, 11);
         }
 
-        private void wait(int milliseconds)
+        public static void wait(int milliseconds)
         {
             System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
             if (milliseconds == 0 || milliseconds < 0) return;
@@ -314,8 +333,8 @@ namespace blackjack_game
 
         private void SetCardPosition(PictureBox card, int num)
         {
-            card.Location = new Point(currentPositions[num, 0], currentPositions[num, 1]);
-            currentPositions[num, 0] += 40;
+            card.Location = new Point(players[num].currentCardPosition[0], players[num].currentCardPosition[1]);
+            players[num].currentCardPosition[0] += 40;
         }
 
         private void MoreCard_Click(object sender, EventArgs e)
@@ -338,20 +357,16 @@ namespace blackjack_game
 
                 if (sum == max && sum != 0)
                 {
-                    cropieSays.Visible = true;
-                    cropieText.Visible = true;
-                    cropieText.Text = "Нічия!\nГроші забирає \n" + names[1];
+                    players[1].Say("Нічия!\nГроші забирає \n" + names[1]);
                     return;
-                } else if (sum > max && sum <= 21)
+                } else if (sum > max && sum <= BLACKJACK)
                 {
                     max = sum;
                     maxIndex = i;
                 }
             }
 
-            cropieSays.Visible = true;
-            cropieText.Visible = true;
-            cropieText.Text = "Виграв " + names[maxIndex];
+            players[1].Say("Виграв " + names[maxIndex]);
         }
 
         private bool isThereBlackJack()
@@ -360,7 +375,7 @@ namespace blackjack_game
             {
                 int sum = FindSum(players[i].cards);
 
-                if (sum == 21)
+                if (sum == BLACKJACK)
                     return true;
             }
 
@@ -384,6 +399,8 @@ namespace blackjack_game
                 {
                     if (i == 1)
                         back.Visible = false;
+
+
                     GetCardsTo(cardDict, players[i].cards, i);
                     wait(500);
 
