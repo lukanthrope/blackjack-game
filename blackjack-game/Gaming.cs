@@ -27,6 +27,7 @@ namespace blackjack_game
         int numberOfOponents;
 
         int gamerMoney = 2000;
+        int bet = 0;
         public Gaming(string name, int numberOfOponents)
         {
             InitializeComponent();
@@ -39,6 +40,7 @@ namespace blackjack_game
         {
             HideCards();
             CreateDict();
+            ResetPositions();
             
             money.Text = gamerMoney.ToString();
             username.Text = name;
@@ -54,10 +56,15 @@ namespace blackjack_game
             pictureGoblin.BackColor = Color.Transparent;
             pictureClim.BackColor = Color.Transparent;
 
+            goblinSays.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
+        }
+
+        private void ResetPositions()
+        {
             int[] tempArr = new int[2]
-            {
+           {
                 initialPositions[0, 0], initialPositions[0, 1]
-            };
+           };
 
             players[0] = new Player(names[0], tempArr);
 
@@ -91,8 +98,6 @@ namespace blackjack_game
             };
                 players[3] = new Player(names[3], tempArr, climSays, climText);
             }
-
-            goblinSays.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
         }
 
         private void MoneyInputValidator(object sender, KeyPressEventArgs e)
@@ -174,6 +179,7 @@ namespace blackjack_game
 
         private void CreateDict()
         {
+            Dictionary<PictureBox, int> cardDict = new Dictionary<PictureBox, int>();
             cardDict.Add(twoC, 2);
             cardDict.Add(twoD, 2);
             cardDict.Add(twoH, 2);
@@ -238,6 +244,8 @@ namespace blackjack_game
             cardDict.Add(aceD, 11);
             cardDict.Add(aceH, 11);
             cardDict.Add(aceS, 11);
+
+            this.cardDict = cardDict;
         }
 
         public static void wait(int milliseconds)
@@ -269,7 +277,8 @@ namespace blackjack_game
                 {
                     gamerMoney -= Convert.ToInt32(MoneyInput.Text);
                     money.Text = gamerMoney.ToString();
-
+                    bet = Convert.ToInt32(MoneyInput.Text);
+                    
                     MoneyInput.Visible = false;
                     button1.Visible = false;
                     label2.Visible = false;
@@ -300,10 +309,6 @@ namespace blackjack_game
                     if (isThereBlackJack())
                     {
                         getWinner();
-
-                        MoneyInput.Visible = true;
-                        button1.Visible = true;
-                        label2.Visible = true;
                     }
                     else
                     {
@@ -351,22 +356,39 @@ namespace blackjack_game
         {
             int max = 0;
             int maxIndex = -1;
+            int numOfMax = 1;
             for (int i = 0; i <= numberOfOponents; i++)
             {
                 int sum = FindSum(players[i].cards);
 
-                if (sum == max && sum != 0)
+                if (sum == max)
                 {
-                    players[1].Say("Нічия!\nГроші забирає \n" + names[1]);
-                    return;
+                    numOfMax++;
                 } else if (sum > max && sum <= BLACKJACK)
                 {
                     max = sum;
                     maxIndex = i;
+                    numOfMax = 1;
                 }
             }
 
             players[1].Say("Виграв " + names[maxIndex]);
+            if (maxIndex == 0)
+            {
+                gamerMoney =  gamerMoney + bet * 4;
+                money.Text = gamerMoney.ToString();
+            }
+
+            HideCards();
+            CreateDict();
+            ResetPositions();
+
+            MoneyInput.Visible = true;
+            button1.Visible = true;
+            label2.Visible = true;
+
+            moreCard.Visible = false;
+            enoughButton.Visible = false;
         }
 
         private bool isThereBlackJack()

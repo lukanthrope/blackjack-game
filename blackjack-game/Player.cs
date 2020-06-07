@@ -15,7 +15,12 @@ namespace blackjack_game
         private PictureBox cloud;
         private Label cloudText;
 
-        public Player(string name, int[] currentCardPosition, PictureBox cloud = null, Label cloudText = null)
+        public Player(
+            string name, 
+            int[] currentCardPosition, 
+            PictureBox cloud = null, 
+            Label cloudText = null
+            )
         {
             this.name = name;
             this.currentCardPosition = currentCardPosition;
