@@ -278,7 +278,8 @@ namespace blackjack_game
                     gamerMoney -= Convert.ToInt32(MoneyInput.Text);
                     money.Text = gamerMoney.ToString();
                     bet = Convert.ToInt32(MoneyInput.Text);
-                    
+
+                    HideCards();
                     MoneyInput.Visible = false;
                     button1.Visible = false;
                     label2.Visible = false;
@@ -372,23 +373,26 @@ namespace blackjack_game
                 }
             }
 
-            players[1].Say("Виграв " + names[maxIndex]);
+            if (maxIndex == -1)
+                players[1].Say("Виграло казино");
+            else
+                players[1].Say("Виграв " + names[maxIndex]);
             if (maxIndex == 0)
             {
                 gamerMoney =  gamerMoney + bet * 4;
                 money.Text = gamerMoney.ToString();
             }
 
-            HideCards();
             CreateDict();
             ResetPositions();
+            moreCard.Visible = false;
+            enoughButton.Visible = false;
+
+            wait(1000);
 
             MoneyInput.Visible = true;
             button1.Visible = true;
             label2.Visible = true;
-
-            moreCard.Visible = false;
-            enoughButton.Visible = false;
         }
 
         private bool isThereBlackJack()
@@ -414,7 +418,7 @@ namespace blackjack_game
 
         private void BotsTakeCard()
         {
-            for (int i = 0; i <= numberOfOponents; i++)
+            for (int i = 1; i <= numberOfOponents; i++)
             {
                 int sum = FindSum(players[i].cards);
                 if (sum < 17)
@@ -422,7 +426,7 @@ namespace blackjack_game
                     if (i == 1)
                         back.Visible = false;
 
-
+                    players[i].Say("Візьму ще карту", 1000);
                     GetCardsTo(cardDict, players[i].cards, i);
                     wait(500);
 
