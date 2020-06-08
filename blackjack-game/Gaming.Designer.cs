@@ -942,7 +942,7 @@
             this.cropieText.AutoSize = true;
             this.cropieText.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cropieText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.cropieText.Location = new System.Drawing.Point(921, 61);
+            this.cropieText.Location = new System.Drawing.Point(893, 46);
             this.cropieText.Name = "cropieText";
             this.cropieText.Size = new System.Drawing.Size(174, 23);
             this.cropieText.TabIndex = 80;
@@ -953,7 +953,7 @@
             this.climText.AutoSize = true;
             this.climText.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.climText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.climText.Location = new System.Drawing.Point(1332, 175);
+            this.climText.Location = new System.Drawing.Point(1281, 162);
             this.climText.Name = "climText";
             this.climText.Size = new System.Drawing.Size(109, 23);
             this.climText.TabIndex = 81;
@@ -965,7 +965,7 @@
             this.goblinText.AutoSize = true;
             this.goblinText.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.goblinText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.goblinText.Location = new System.Drawing.Point(99, 223);
+            this.goblinText.Location = new System.Drawing.Point(79, 217);
             this.goblinText.Name = "goblinText";
             this.goblinText.Size = new System.Drawing.Size(109, 23);
             this.goblinText.TabIndex = 82;
