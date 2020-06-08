@@ -347,9 +347,24 @@ namespace blackjack_game
         {
             if (cardDict.Count != 0)
                 GetCardsTo(cardDict, players[0].cards);
-            BotsTakeCard();
+
             if (isThereBlackJack())
                 getWinner();
+            else
+            {
+                if (FindSum(players[0].cards) > BLACKJACK)
+                {
+                    players[1].Say("У вас перебор", 1000);
+                    moreCard.Visible = false;
+                    
+                    enoughButton.PerformClick();
+                    enoughButton.Visible = false;
+                }
+                else
+                {
+                    BotsTakeCard();
+                }
+            }
         }
 
         private void getWinner()
@@ -375,7 +390,7 @@ namespace blackjack_game
             if (maxIndex == -1)
                 players[1].Say("Виграло казино\nРобіть ставки^^");
             else
-                players[1].Say("Виграв " + names[maxIndex] + "\nРобіть ставки^^");
+                players[1].Say("Виграв " + players[maxIndex].getName() + "\nРобіть ставки^^");
             if (maxIndex == 0)
             {
                 gamerMoney =  gamerMoney + bet * 4;
@@ -425,7 +440,8 @@ namespace blackjack_game
                     if (i == 1)
                         back.Visible = false;
 
-                    players[i].Say("Візьму ще карту", 1200);
+                    if (i != 1)
+                        players[i].Say("Візьму ще карту", 1200);
                     GetCardsTo(cardDict, players[i].cards, i);
                     wait(500);
 

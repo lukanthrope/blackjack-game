@@ -102,7 +102,6 @@
             this.cropieText = new System.Windows.Forms.Label();
             this.climText = new System.Windows.Forms.Label();
             this.goblinText = new System.Windows.Forms.Label();
-            this.continueButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClim)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureGoblin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCrupie)).BeginInit();
@@ -972,26 +971,12 @@
             this.goblinText.Text = "ще карту";
             this.goblinText.Visible = false;
             // 
-            // continueButton
-            // 
-            this.continueButton.BackColor = System.Drawing.Color.Purple;
-            this.continueButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.continueButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.continueButton.Location = new System.Drawing.Point(855, 725);
-            this.continueButton.Name = "continueButton";
-            this.continueButton.Size = new System.Drawing.Size(125, 38);
-            this.continueButton.TabIndex = 83;
-            this.continueButton.Text = "продовжити";
-            this.continueButton.UseVisualStyleBackColor = false;
-            this.continueButton.Visible = false;
-            // 
             // Gaming
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1542, 807);
-            this.Controls.Add(this.continueButton);
             this.Controls.Add(this.goblinText);
             this.Controls.Add(this.climText);
             this.Controls.Add(this.cropieText);
@@ -1209,6 +1194,5 @@
         private System.Windows.Forms.Label cropieText;
         private System.Windows.Forms.Label climText;
         private System.Windows.Forms.Label goblinText;
-        private System.Windows.Forms.Button continueButton;
     }
 }
