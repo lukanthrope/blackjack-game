@@ -345,6 +345,8 @@ namespace blackjack_game
 
         private void MoreCard_Click(object sender, EventArgs e)
         {
+            moreCard.Visible = false;
+            enoughButton.Visible = false;
             if (cardDict.Count != 0)
                 GetCardsTo(cardDict, players[0].cards);
 
@@ -355,16 +357,25 @@ namespace blackjack_game
                 if (FindSum(players[0].cards) > BLACKJACK)
                 {
                     players[1].Say("У вас перебор", 1000);
-                    moreCard.Visible = false;
-                    
+                    enoughButton.Visible = true;
                     enoughButton.PerformClick();
-                    enoughButton.Visible = false;
+                    
                 }
                 else
                 {
                     BotsTakeCard();
+                    enoughButton.Visible = true;
+                    moreCard.Visible = true;
                 }
             }
+        }
+
+        private void EnoughButton_Click(object sender, EventArgs e)
+        {
+            moreCard.Visible = false;
+            enoughButton.Visible = false;
+            BotsTakeCard();
+            getWinner();
         }
 
         private void getWinner()
@@ -387,11 +398,11 @@ namespace blackjack_game
                 }
             }
 
-            if (maxIndex == -1)
+            if (maxIndex == -1 || numOfMax > 1)
                 players[1].Say("Виграло казино\nРобіть ставки^^");
             else
                 players[1].Say("Виграв " + players[maxIndex].getName() + "\nРобіть ставки^^");
-            if (maxIndex == 0)
+            if (maxIndex == 0 && numOfMax == 1)
             {
                 gamerMoney =  gamerMoney + bet * 4;
                 money.Text = gamerMoney.ToString();
@@ -449,11 +460,5 @@ namespace blackjack_game
                 }
             }
         } 
-
-        private void EnoughButton_Click(object sender, EventArgs e)
-        {
-            BotsTakeCard();
-            getWinner();
-        }
     }
 }
