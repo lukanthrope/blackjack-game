@@ -459,6 +459,14 @@ namespace blackjack_game
                     BotsTakeCard();
                 }
             }
-        } 
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Dashboard dashboard = new Dashboard(players[0].getName(), gamerMoney);
+            dashboard.Closed += (object s, EventArgs args) => Close();
+            dashboard.Show();
+        }
     }
 }

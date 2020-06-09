@@ -32,11 +32,11 @@ namespace blackjack_game
                 errorMessage.Visible = true;
             } else
             {
-                this.Hide();
+                Hide();
                 string username = NameInput.Text;
                 int num = Convert.ToInt32(numericUpDown1.Value);
                 Gaming form2 = new Gaming(username, num);
-                form2.Closed += (object s, EventArgs args) => this.Close();
+                form2.Closed += (object s, EventArgs args) => Close();
                 form2.Show();
             }
         }
