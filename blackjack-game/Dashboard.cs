@@ -63,7 +63,11 @@ namespace blackjack_game
         {
             int i = 0;
             dataGridView1.RowCount = db.Count;
-            foreach (UserData el in db)
+            List<UserData> sortedList = db
+                                          .OrderBy((UserData el) => el.money)
+                                          .Reverse()
+                                          .ToList();
+            foreach (UserData el in sortedList)
             {
                 dataGridView1.Rows[i].Cells[0].Value = el.name;
                 dataGridView1.Rows[i].Cells[1].Value = el.money;
