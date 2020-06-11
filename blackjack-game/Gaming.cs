@@ -23,7 +23,6 @@ namespace blackjack_game
             { 50, 570 }, { 480, 378 }, { 300, 450 }, { 700, 455 },
         };
 
-        string name;
         int numberOfOponents;
 
         int gamerMoney = 2000;
@@ -32,7 +31,7 @@ namespace blackjack_game
         {
             InitializeComponent();
             MoneyInput.KeyPress += MoneyInputValidator;
-            this.name = name;
+            names[0] = name;
             this.numberOfOponents = numberOfOponents;
         }
 
@@ -43,7 +42,7 @@ namespace blackjack_game
             ResetPositions();
             
             money.Text = gamerMoney.ToString();
-            username.Text = name;
+            username.Text = names[0];
             pictureTable.Controls.Add(pictureCrupie);
             pictureTable.Controls.Add(pictureGoblin);
             pictureTable.Controls.Add(pictureClim);
