@@ -332,6 +332,17 @@ namespace blackjack_game
             to.Add(temp, from[temp]);
             from.Remove(temp);
 
+            if (FindSum(to) > BLACKJACK)
+            {
+                if (to.ContainsKey(aceC))
+                    to[aceC] = 1;
+                else if (to.ContainsKey(aceD))
+                    to[aceD] = 1;
+                else if (to.ContainsKey(aceH))
+                    to[aceH] = 1;
+                else if (to.ContainsKey(aceS))
+                    to[aceS] = 1;
+            }
             SetCardPosition(temp, gamerNumber);
             temp.Visible = true;
         }
