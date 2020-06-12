@@ -334,13 +334,13 @@ namespace blackjack_game
 
             if (FindSum(to) > BLACKJACK)
             {
-                if (to.ContainsKey(aceC))
+                if (to.ContainsKey(aceC) && to[aceC] != 1)
                     to[aceC] = 1;
-                else if (to.ContainsKey(aceD))
+                else if (to.ContainsKey(aceD) && to[aceD] != 1)
                     to[aceD] = 1;
-                else if (to.ContainsKey(aceH))
+                else if (to.ContainsKey(aceH) && to[aceH] != 1)
                     to[aceH] = 1;
-                else if (to.ContainsKey(aceS))
+                else if (to.ContainsKey(aceS) && to[aceS] != 1)
                     to[aceS] = 1;
             }
             SetCardPosition(temp, gamerNumber);
