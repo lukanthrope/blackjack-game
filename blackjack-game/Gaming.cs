@@ -403,7 +403,7 @@ namespace blackjack_game
                 players[1].Say("Виграв " + players[maxIndex].getName() + "\nРобіть ставки^^");
             if (maxIndex == 0 && numOfMax == 1)
             {
-                gamerMoney =  gamerMoney + bet * 4;
+                gamerMoney =  gamerMoney + bet * (1 + numberOfOponents);
                 money.Text = gamerMoney.ToString();
             }
 

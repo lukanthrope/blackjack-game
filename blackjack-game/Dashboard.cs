@@ -57,8 +57,6 @@ namespace blackjack_game
             }
         }
 
-
-
         private void Dashboard_Load(object sender, EventArgs e)
         {
             int i = 0;
