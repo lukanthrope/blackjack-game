@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.playAgain = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -80,7 +81,7 @@
             this.closeButton.BackColor = System.Drawing.Color.LightCoral;
             this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.closeButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.closeButton.Location = new System.Drawing.Point(397, 516);
+            this.closeButton.Location = new System.Drawing.Point(392, 545);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(152, 52);
             this.closeButton.TabIndex = 1;
@@ -121,11 +122,25 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // playAgain
+            // 
+            this.playAgain.BackColor = System.Drawing.Color.SlateBlue;
+            this.playAgain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.playAgain.ForeColor = System.Drawing.SystemColors.Control;
+            this.playAgain.Location = new System.Drawing.Point(392, 476);
+            this.playAgain.Name = "playAgain";
+            this.playAgain.Size = new System.Drawing.Size(152, 42);
+            this.playAgain.TabIndex = 5;
+            this.playAgain.Text = "Зіграти ще";
+            this.playAgain.UseVisualStyleBackColor = false;
+            this.playAgain.Click += new System.EventHandler(this.PlayAgain_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(957, 634);
+            this.Controls.Add(this.playAgain);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label1);
@@ -150,5 +165,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button playAgain;
     }
 }

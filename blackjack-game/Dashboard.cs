@@ -15,11 +15,13 @@ namespace blackjack_game
     public partial class Dashboard : Form
     {
         int usermoney;
+        string username;
         List<UserData> db = new List<UserData>();
         public Dashboard(string name, int money)
         {
             InitializeComponent();
             usermoney = money;
+            username = name;
             const string filename = @"data.dat";
             UserData userData = new UserData(name, money);
 
@@ -84,6 +86,15 @@ namespace blackjack_game
             string text = "Я виграв " + usermoney + "$ у грі BlackJack goblino \n https://github.com/lukanthrope/blackjack-game";
             string link = "https://twitter.com/intent/tweet?hashtags=gaming&text=";
             System.Diagnostics.Process.Start(link + text);
+        }
+
+        private void PlayAgain_Click(object sender, EventArgs e)
+        {
+            Hide();
+
+            Form1 form1 = new Form1();
+            form1.Closed += (object s, EventArgs args) => Close();
+            form1.Show();
         }
     }
 }
