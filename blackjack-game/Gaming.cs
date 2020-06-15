@@ -269,9 +269,16 @@ namespace blackjack_game
         {
             if (MoneyInput.Text.Trim() != "")
             {
-                if (Convert.ToInt32(MoneyInput.Text) > gamerMoney)
+                if (gamerMoney < 1)
+                {
+                    MessageBox.Show("Ви програли усі грошики!\nВ наступний раз пощастить(або ні)");
+                } else if (Convert.ToInt32(MoneyInput.Text) > gamerMoney)
                 {
                     MessageBox.Show("У вас недостатньо коштів");
+                }
+                else if (Convert.ToInt32(MoneyInput.Text.Trim()) < 1)
+                {
+                    MessageBox.Show("Мінімальна ставка 1 долар");
                 } else
                 {
                     gamerMoney -= Convert.ToInt32(MoneyInput.Text);

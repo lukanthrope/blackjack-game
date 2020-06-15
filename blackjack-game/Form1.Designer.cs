@@ -90,13 +90,13 @@
             // h1
             // 
             this.h1.AutoSize = true;
-            this.h1.Font = new System.Drawing.Font("Comic Sans MS", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.h1.Font = new System.Drawing.Font("Comic Sans MS", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.h1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.h1.Location = new System.Drawing.Point(744, 61);
+            this.h1.Location = new System.Drawing.Point(673, 100);
             this.h1.Name = "h1";
-            this.h1.Size = new System.Drawing.Size(422, 112);
+            this.h1.Size = new System.Drawing.Size(531, 84);
             this.h1.TabIndex = 3;
-            this.h1.Text = "BlackJack";
+            this.h1.Text = "BlackJack goblino";
             // 
             // label1
             // 
